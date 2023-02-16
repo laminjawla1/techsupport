@@ -1,0 +1,89 @@
+{% extends 'blog/layout.html' %}
+{% block body %}
+  <style>
+    h1, h3 {
+      color: aliceblue;
+    }
+  </style>
+    <!-- Main -->
+    <main class="main-container">
+      <div class="main-cards">
+        <div class="card">
+            <div class="card-inner">
+              <h3>Total Tickets</h3>
+              <span class="material-icons-outlined">attach_money</span>
+            </div>
+            <h1>{{tickets_total}}</h1>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+              <h3>Tickets Pending</h3>
+              <span class="material-icons-outlined">attach_money</span>
+            </div>
+            <h1>{{tickets_pending}}</h1>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+              <h3>Tickets Closed</h3>
+              <span class="material-icons-outlined">attach_money</span>
+            </div>
+            <h1>{{tickets_closed}}</h1>
+        </div>
+      </div>
+
+      <div class="main-cards1">
+        <div class="card">
+            <div class="card-inner">
+              <h3>Users</h3>
+              <span class="material-icons-outlined">groups</span>
+            </div>
+            <h1>{{users}}</h1>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+              <h3>Zones</h3>
+              <span class="material-icons-outlined">groups</span>
+            </div>
+            <h1>{{zones}}</h1>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+              <h3>Branches</h3>
+              <span class="material-icons-outlined">groups</span>
+            </div>
+            <h1>{{branches}}</h1>
+        </div>
+      </div>
+
+      <div class="main-cards1">
+        <div class="card">
+            <div class="card-inner">
+              <h3>Posts</h3>
+              <span class="material-icons-outlined">groups</span>
+            </div>
+            <h1>{{posts}}</h1>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+              <h3>Comments</h3>
+              <span class="material-icons-outlined">groups</span>
+            </div>
+            <h1>{{comments}}</h1>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+              <h3>Likes</h3>
+              <span class="material-icons-outlined">groups</span>
+            </div>
+            <h1>{{likes}}</h1>
+        </div>
+      </div>
+  </main>
+
+{% endblock body %}
