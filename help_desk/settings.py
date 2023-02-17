@@ -54,6 +54,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
 ]
 
 ROOT_URLCONF = "help_desk.urls"
@@ -153,4 +156,4 @@ EMAIL_HOST_USER=os.environ.get("google_email")
 EMAIL_HOST_PASSWORD=os.environ.get("google_password")
 SERVER_EMAIL = EMAIL_HOST_USER
 
-SESSION_EXPIRE_SECONDS = 1200
+SESSION_EXPIRE_SECONDS = 1800
