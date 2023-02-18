@@ -81,6 +81,12 @@ class PostDetailView(LoginRequiredMixin, DetailView):
 class CommentView(LoginRequiredMixin, CreateView):
     model = Comment
     fields = ['body']
+
+    def form_valid(self, form):
+        form.instance.post = get_object_or_404(Post, id=self.kwargs['pk'])
+        form.instance.commenter = self.request.user
+        messages.success(self.request, "You've commented")
+        return super().form_valid(form)
     
     def get_context_data(self, *args, **kwargs):
         context = super(CommentView, self).get_context_data(*args, **kwargs)

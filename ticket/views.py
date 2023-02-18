@@ -20,7 +20,7 @@ class BookTicketView(LoginRequiredMixin, CreateView):
         send_mail(
             f'{form.instance.issue}',
             f'{form.instance.submitter.first_name} {form.instance.submitter.last_name} sent a support request.\n\nDESCRIPTION:\n\n{form.instance.description}', 
-            'from@example.com',
+            'yonnatech.g@gmail.com',
             ['techsupport@yonnaforexbureau.com'],
             fail_silently=False,
         )
@@ -28,7 +28,7 @@ class BookTicketView(LoginRequiredMixin, CreateView):
         send_mail(
             f'Ticket Assignation',
             f'You have been assigned a task to work on the request of {form.instance.submitter.first_name} {form.instance.submitter.last_name} about {form.instance.issue} ', 
-            'from@example.com',
+            'yonnatech.g@gmail.com',
             [f'{expert.expert.email}'],
             fail_silently=False,
         )
