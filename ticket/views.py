@@ -11,12 +11,14 @@ from django.core.mail import send_mail
 
 class BookTicketView(LoginRequiredMixin, CreateView):
     model = Ticket
-    fields = ['zone', 'branch', 'issue', 'phone', 'anydesk', 'image', 'description']
+    fields = ['issue', 'phone', 'anydesk', 'image', 'description']
 
     def form_valid(self, form):
         expert = random.choice(Expert.objects.all())
         form.instance.assigned_to = expert
         form.instance.submitter = self.request.user
+        form.instance.zone = self.request.user.account.zone
+        form.instance.branch = self.request.user.account.branch
         send_mail(
             f'{form.instance.issue}',
             f'{form.instance.submitter.first_name} {form.instance.submitter.last_name} sent a support request.\n\nDESCRIPTION:\n\n{form.instance.description}', 
