@@ -1,4 +1,6 @@
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.views.generic import CreateView, ListView, UpdateView
 from .models import Ticket, Zones, Branches
 from blog.models import Post, Comment
@@ -94,17 +96,13 @@ class UpdateTicketView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     fields = ['zone', 'branch', 'issue', 'phone', 'anydesk', 'image', 'description']
 
     def form_valid(self, form):
-        form.instance.submitter = self.request.user
-        return super().form_valid(form)
-
-    def form_valid(self, form):
         messages.success(self.request, "Your ticket is updated successfully.")
         return super().form_valid(form)
     
     
     def test_func(self):
         ticket = self.get_object()
-        return self.request.user == ticket.submitter
+        return self.request.user == ticket.submitter and not ticket.status
     
     def get_context_data(self, *args, **kwargs):
         context = super(UpdateTicketView, self).get_context_data(*args, **kwargs)
