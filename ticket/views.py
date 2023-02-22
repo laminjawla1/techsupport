@@ -16,8 +16,8 @@ class BookTicketView(LoginRequiredMixin, CreateView):
     fields = ['issue', 'phone', 'anydesk', 'image', 'description']
 
     def form_valid(self, form):
-        expert = random.choice(random.shuffle(Expert.objects.all()))
-        form.instance.assigned_to = expert
+        random.shuffle(Expert.objects.all())
+        form.instance.assigned_to = random.choice()
         form.instance.submitter = self.request.user
         form.instance.zone = self.request.user.account.zone
         form.instance.branch = self.request.user.account.branch
