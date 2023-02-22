@@ -93,7 +93,7 @@ class DashboardView(LoginRequiredMixin, ListView):
 
 class UpdateTicketView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Ticket
-    fields = ['zone', 'branch', 'issue', 'phone', 'anydesk', 'image', 'description']
+    fields = ['issue', 'phone', 'anydesk', 'image', 'description']
 
     def form_valid(self, form):
         messages.success(self.request, "Your ticket is updated successfully.")
