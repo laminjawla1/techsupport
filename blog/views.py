@@ -46,6 +46,7 @@ class PostByCategoryView(LoginRequiredMixin, ListView):
     
     def get_context_data(self, *args, **kwargs):
         category = self.kwargs.get('category')
+        category = category.replace('-', ' ')
         context = super(PostByCategoryView, self).get_context_data(*args, **kwargs)
         context["category"] = category.capitalize()
         return context
