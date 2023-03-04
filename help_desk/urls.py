@@ -41,16 +41,7 @@ urlpatterns = [
     path('tickets/<str:username>/tickets', TicketView.as_view(), name='my_tickets'),
     path('tickets/<int:pk>/update', UpdateTicketView.as_view(), name="update_ticket"),
     path('dashboard', DashboardView.as_view(), name="dashboard")
-] # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-else:
-    urlpatterns += [
-        # Map the STATIC_URL prefix to the directory where your static files are stored
-        # This route is only used in production mode
-        path(settings.STATIC_URL.lstrip('/'), serve, {'document_root': settings.STATIC_ROOT}),
-    ]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
