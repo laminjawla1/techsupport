@@ -43,8 +43,7 @@ urlpatterns = [
     path('dashboard', DashboardView.as_view(), name="dashboard")
 ] 
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = "Yonna Forex Bureau - IT Help-Desk Admin"
 admin.site.site_title = "Yonna Tech Support Admin Portal"
