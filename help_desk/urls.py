@@ -44,6 +44,7 @@ urlpatterns = [
 ] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 admin.site.site_header = "Yonna Forex Bureau - IT Help-Desk Admin"
 admin.site.site_title = "Yonna Tech Support Admin Portal"
