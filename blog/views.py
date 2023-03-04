@@ -23,12 +23,12 @@ class PostListView(LoginRequiredMixin, ListView):
 
         page_obj = context['page_obj']
         if page_obj.has_previous():
-            prev_url = reverse('post_list_view') + f'?page={page_obj.previous_page_number()}'
+            prev_url = reverse('PostListView') + f'?page={page_obj.previous_page_number()}'
         else:
             prev_url = None
 
         if page_obj.has_next():
-            next_url = reverse('post_list_view') + f'?page={page_obj.next_page_number()}'
+            next_url = reverse('PostListView') + f'?page={page_obj.next_page_number()}'
         else:
             next_url = None
 
