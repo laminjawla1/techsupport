@@ -41,7 +41,7 @@ urlpatterns = [
     path('tickets/<str:username>/tickets', TicketView.as_view(), name='my_tickets'),
     path('tickets/<int:pk>/update', UpdateTicketView.as_view(), name="update_ticket"),
     path('dashboard', DashboardView.as_view(), name="dashboard")
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL.replace('static', ''), document_root=settings.STATIC_ROOT)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
