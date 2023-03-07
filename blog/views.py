@@ -39,7 +39,8 @@ def index(request):
     return render(request, 'blog/blog_home.html', {
         'categories': categories,
         'page_obj': paginator,
-        'posts': posts
+        'posts': posts,
+        'is_paginated': True
     })
 
 
