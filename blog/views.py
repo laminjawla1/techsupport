@@ -7,6 +7,8 @@ from .models import Post, Author, Category, Comment
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+from django.shortcuts import render
 
 
 class PostListView(LoginRequiredMixin, ListView):
@@ -22,6 +24,23 @@ class PostListView(LoginRequiredMixin, ListView):
         context["categories"] = categories
 
         return context
+
+def index(request):
+    categories = Category.objects.all()
+    posts = Post.objects.all().order_by('-date_posted')
+    page = request.GET.get('page', 1)
+    paginator = Paginator(posts, 4)
+
+    try:
+        paginator = paginator.page(page)
+    except:
+        paginator = paginator.page(1)
+
+    return render(request, 'blog/blog_home.html', {
+        'categories': categories,
+        'page_obj': paginator,
+        'posts': posts
+    })
 
 
 class UserPostListView(LoginRequiredMixin, ListView):
