@@ -11,20 +11,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 
 
-class PostListView(LoginRequiredMixin, ListView):
-    model = Post
-    template_name = 'blog/blog_home.html'
-    context_object_name = 'posts'
-    ordering = ['-date_posted']
-    paginate_by = 4
-
-    def get_context_data(self, *args, **kwargs):
-        categories = Category.objects.all()
-        context = super(PostListView, self).get_context_data(*args, **kwargs)
-        context["categories"] = categories
-
-        return context
-
+@login_required
 def index(request):
     categories = Category.objects.all()
     posts = Post.objects.all().order_by('-date_posted')
