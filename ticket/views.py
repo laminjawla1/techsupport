@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from ticket.models import Expert
 import random
+from django.core.exceptions import PermissionDenied
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 
@@ -64,6 +65,8 @@ class DashboardView(LoginRequiredMixin, ListView):
     context_object_name = 'tickets'
     
     def get_context_data(self, *args, **kwargs):
+        if not self.request.user.is_staff:
+            raise PermissionDenied()
         tickets_total = len(Ticket.objects.all())
         tickets_pending = len(Ticket.objects.filter(status=False))
         tickets_closed = len(Ticket.objects.filter(status=True))
