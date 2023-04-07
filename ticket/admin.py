@@ -11,7 +11,7 @@ def export_tickets(modeladmin, request, queryset):
     writer.writerow(['Full Name', 'Branch', 'Zone', 'Phone', 'Issue',
                     'Category', 'Status', 'Date Submitted'])
     tickets = queryset.values_list(
-        'submitter', 'branch','zone', 'phone', 'issue',
+        'submitter__username', 'branch__name','zone__name', 'phone', 'issue',
         'category', 'status', 'date_submitted')
     for ticket in tickets:
         writer.writerow(ticket)
