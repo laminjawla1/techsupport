@@ -32,6 +32,7 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
+                  <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
                   <a class="nav-item nav-link" href="{% url 'blog_home' %}">Blog</a>
                   <a class="nav-item nav-link" href="{% url 'my_tickets' user.username %}">Service Desk</a>
                   <a class="nav-item nav-link" href="{% url 'request_authorship' %}">Request Authorship</a>
