@@ -25,3 +25,6 @@ def account(request):
         'user_form': user_form,
         'account_form': account_form
     })
+
+def set_language(request):
+    return redirect('admin:index')
