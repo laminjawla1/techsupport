@@ -1,35 +1,25 @@
 {% extends "blog/layout.html" %}
 {% load crispy_forms_tags %}
 {% block body %}
-<style>
-    body {
-        background-color: rgb(65, 3, 61);
-        color: whitesmoke;
-    }
-    
-    div[id="div_id_username"], div [id="div_id_password"]{
-        margin-bottom: 15px;
-    }  
-
-    form {
-        padding-top: 15%;
-        padding-bottom: 30%;
-        width: 25%;
-    }
-</style>
-    <div class="media container d-flex justify-content-center align-items-center">
+<div class="row">
+    <div class="col-md-4 mx-auto bg-dark p-3 text-white shadow-lg">
         <form autocomplete="off" method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In</legend>
+                <legend class="border-right border-left mb-4 bg-info text-center">Welcome! Please Log In <i class="fa fa-lock"></i></legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group text-center">
-                <button class="btn btn-outline-info" type="submit">Login</button>
-                <small class="text-muted ml-2">
-                    <a href="{% url 'password_reset' %}">Forgot Password</a>
-                </small>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-outline-info w-100" type="submit">Login</button>
+                    </div>
+                    <div class="col-md-12">
+                        <a class="btn btn-outline-danger w-100 mt-2" href="{% url 'password_reset' %}">Forgot Password</a>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
+</div>
 {% endblock body %}
